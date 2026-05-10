@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dhivyalakshmi - Portfolio</title>
+  <title>Portfolio — Your Name</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -963,29 +963,115 @@
     .d1{animation-delay:.08s}.d2{animation-delay:.2s}.d3{animation-delay:.32s}
     .d4{animation-delay:.44s}.d5{animation-delay:.56s}.d6{animation-delay:.68s}.d7{animation-delay:.8s}
 
+    /* ══════════════ HAMBURGER ══════════════ */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s, background var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ══════════════ MOBILE NAV DRAWER ══════════════ */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 56px; left: 0; right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 0 1rem;
+      flex-direction: column;
+      z-index: 999;
+      list-style: none;
+      transition: background var(--transition);
+      box-shadow: 0 8px 30px var(--shadow);
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer li { width: 100%; }
+    .nav-drawer a {
+      display: block;
+      padding: 0.85rem 6%;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-drawer li:last-child a { border-bottom: none; }
+    .nav-drawer a:hover,
+    .nav-drawer a.nav-active { color: var(--cyan); background: var(--cyan-glow2); }
+
     /* ══════════════ RESPONSIVE ══════════════ */
     @media (max-width: 880px) {
-      .hero-inner { flex-direction: column; gap: 3rem; text-align: center; }
-      .photo-circle-wrap { width: 220px; height: 220px; }
-      .hero-text { display: flex; flex-direction: column; align-items: center; }
-      .fc-2 { top: 0; left: -10px; }
-      .fc-1 { bottom: -10px; right: -10px; }
-      .btn-row { justify-content: center; }
-      .stats-row { justify-content: center; }
-      nav { padding: 0.9rem 4%; }
+      nav { padding: 0.85rem 5%; }
       .nav-links { display: none; }
-      .achieve-featured { flex-direction: column; }
-      .achieve-img-wrap { width: 100%; min-height: 360px; }
-      .cert-grid { grid-template-columns: 1fr; }
-      .achieve-text-row { grid-template-columns: 1fr; }
-      .section-inner { padding: 3rem 5%; }
-    }
-    @media (max-width: 500px) {
-      .hero { padding: 7rem 5% 4rem; }
+      .hamburger { display: flex; }
+      .toggle-wrap { gap: 0.4rem; }
+      .toggle-icon { font-size: 0.9rem; }
+      .toggle-btn { width: 42px; height: 22px; }
+      .toggle-btn::after { width: 15px; height: 15px; top: 2.5px; left: 2.5px; }
+      [data-theme="light"] .toggle-btn::after { transform: translateX(20px); }
+
+      .hero { padding: 7rem 5% 4rem; min-height: auto; }
+      .hero-inner { flex-direction: column; gap: 2.5rem; text-align: center; }
+      .photo-circle-wrap { width: 200px; height: 200px; }
+      .hero-text { display: flex; flex-direction: column; align-items: center; }
+      .hero-desc { max-width: 100%; font-size: 0.93rem; }
+      .btn-row { justify-content: center; }
+      .stats-row { justify-content: center; flex-wrap: wrap; gap: 1.2rem; }
+      .stat { border-right: none; padding: 0 1rem; }
+      .stat:first-child { padding-left: 0; }
+
+      .edu-timeline { grid-template-columns: 1fr; gap: 1rem; }
+      .edu-card { padding: 1.4rem 1.2rem; }
+
       .projects-grid { grid-template-columns: 1fr; }
+
+      .achieve-featured { flex-direction: column; }
+      .achieve-img-wrap { width: 100%; min-height: 340px; }
+      .achieve-text-row { grid-template-columns: 1fr; }
+
+      .cert-grid { grid-template-columns: 1fr; }
+      .section-inner { padding: 3rem 5%; }
+      .intern-grid { grid-template-columns: 1fr; }
       .contact-card { padding: 2.5rem 1.5rem; }
-      .stats-row { flex-wrap: wrap; gap: 1rem; }
-      .stat { border-right: none; padding-right: 0; }
+    }
+
+    @media (max-width: 500px) {
+      nav { padding: 0.75rem 4%; }
+      .hero { padding: 6rem 4% 3rem; }
+      .photo-circle-wrap { width: 160px; height: 160px; }
+      .hero-name { font-size: clamp(2rem, 8vw, 2.8rem); letter-spacing: -1px; }
+      .hero-role { font-size: 0.9rem; }
+      .hero-desc { font-size: 0.88rem; margin-bottom: 1.8rem; }
+      .btn-cyan, .btn-outline { padding: 0.75rem 1.5rem; font-size: 0.85rem; }
+      .stat-n { font-size: 1.8rem; }
+      .edu-card { padding: 1rem; gap: 0.8rem; }
+      .edu-icon { width: 40px; height: 40px; font-size: 1.1rem; border-radius: 10px; }
+      .edu-degree { font-size: 0.9rem; }
+      .edu-school { font-size: 0.82rem; }
+      .section-inner { padding: 2.5rem 4%; }
+      .sec-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+      .achieve-img-wrap { min-height: 280px; }
+      .achieve-text-card { padding: 1.2rem; }
+      .cert-card { padding: 1.2rem; gap: 0.8rem; }
+      .contact-card { padding: 2rem 1.2rem; }
+      .nav-drawer { top: 50px; }
     }
 
     /* Scrollbar */
@@ -1011,12 +1097,29 @@
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="toggle-wrap">
-    <span class="toggle-icon">🌙</span>
-    <div class="toggle-btn" id="themeToggle" role="button" aria-label="Toggle theme"></div>
-    <span class="toggle-icon">☀️</span>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="toggle-wrap">
+      <span class="toggle-icon">🌙</span>
+      <div class="toggle-btn" id="themeToggle" role="button" aria-label="Toggle theme"></div>
+      <span class="toggle-icon">☀️</span>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- ══ MOBILE NAV DRAWER ══ -->
+<ul class="nav-drawer" id="navDrawer">
+  <li><a href="#hero">Home</a></li>
+  <li><a href="#education">Education</a></li>
+  <li><a href="#skills">Skills</a></li>
+  <li><a href="#projects">Projects</a></li>
+  <li><a href="#internship">Internship</a></li>
+  <li><a href="#achievements">Achievements</a></li>
+  <li><a href="#certifications">Certifications</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
 
 <!-- ══ HERO ══ -->
 <section class="hero" id="hero">
@@ -1047,7 +1150,7 @@
 
         <!-- The actual circular photo -->
         <div class="photo-circle">
-          <img src="Profile.webp" alt="Your Name"/>
+          <img src="images/Profile.webp" alt="Your Name"/>
         </div>
 
       </div>
@@ -1232,7 +1335,7 @@
     <div class="projects-grid">
       <div class="proj-card">
         <div class="proj-thumb pt1">
-          <img src="P4.jpg" alt="PrintHub Machine Industries"
+          <img src="images/P4.jpg" alt="PrintHub Machine Industries"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <div class="proj-thumb-placeholder" style="display:none">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
@@ -1252,7 +1355,7 @@
       </div>
       <div class="proj-card">
         <div class="proj-thumb pt2">
-          <img src="p2.png" alt="Color Finder Application"
+          <img src="images/p2.png" alt="Color Finder Application"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <div class="proj-thumb-placeholder" style="display:none">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/><path d="M2 12h20"/></svg>
@@ -1274,7 +1377,7 @@
       </div>
       <div class="proj-card">
         <div class="proj-thumb pt3">
-          <img src="p3.png" alt="ThaniTaste"
+          <img src="images/p3.png" alt="ThaniTaste"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <div class="proj-thumb-placeholder" style="display:none">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -1297,7 +1400,7 @@
       </div>
       <div class="proj-card">
         <div class="proj-thumb pt4">
-          <img src="p1.jpg" alt="Dice of Destiny"
+          <img src="images/p1.jpg" alt="Dice of Destiny"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <div class="proj-thumb-placeholder" style="display:none">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="16" cy="16" r="1.2" fill="currentColor"/><circle cx="16" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="16" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
@@ -1360,7 +1463,7 @@
 
       <div class="achieve-featured">
         <div class="achieve-img-wrap">
-          <img src="A1.jpg" alt="Gold Medalist"/>
+          <img src="images/A1.jpg" alt="Gold Medalist"/>
         </div>
         <div class="achieve-featured-body">
           <span class="achieve-badge">🏆 Gold Medalist at ANJAC</span>
@@ -1517,7 +1620,7 @@
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
           <polyline points="22,6 12,13 2,6"/>
         </svg>
-        dhivyasundaraj12@gmail.com
+        Send Me an Email
       </a>
       <div class="social-pills">
         <a href="https://www.linkedin.com/in/dhivyalakshmi-s-933147281?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-pill" target="_blank" rel="noopener">🔗 LinkedIn</a>
@@ -1585,6 +1688,20 @@
     topBtn.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
   });
   topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Hamburger menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const navDrawer = document.getElementById('navDrawer');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navDrawer.classList.toggle('open');
+  });
+  navDrawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navDrawer.classList.remove('open');
+    });
+  });
 </script>
 <!-- Scroll to top -->
 <button id="scrollTopBtn" aria-label="Back to top" style="
