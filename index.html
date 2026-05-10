@@ -729,15 +729,14 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 1.8rem;
     }
-    @media (max-width: 760px) { .edu-timeline { grid-template-columns: 1fr; } }
 
     .edu-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-top: 3px solid var(--cyan);
       border-radius: 16px;
-      padding: 2rem 2.5rem;
-      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.6rem 1.8rem;
+      display: flex; gap: 1rem; align-items: flex-start;
       transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s, background var(--transition);
       position: relative;
     }
@@ -1037,8 +1036,8 @@
       .stat { border-right: none; padding: 0 1rem; }
       .stat:first-child { padding-left: 0; }
 
-      .edu-timeline { grid-template-columns: 1fr; gap: 1rem; }
-      .edu-card { padding: 1.4rem 1.2rem; }
+      .edu-timeline { grid-template-columns: 1fr !important; gap: 0.9rem !important; }
+      .edu-card { padding: 1.2rem 1rem !important; gap: 0.8rem !important; }
 
       .projects-grid { grid-template-columns: 1fr; }
 
